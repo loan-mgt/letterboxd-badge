@@ -8,9 +8,9 @@ const port = 3000;
 
 const svgFilePath = '/source.svg';
 
-const initialSvgContent = `<svg width="360" height="180" viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg"
+const initialSvgContent = `<svg width="380" height="180" viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect width="360" height="180" rx="30" fill="url(#pattern0)" />
+<rect width="380" height="180" rx="30" fill="url(#pattern0)" />
 <g filter="url(#filter0_d_1_19)">
     <rect x="20" y="37" width="70" height="105" fill="url(#pattern1)"
         shape-rendering="crispEdges" />
