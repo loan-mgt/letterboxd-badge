@@ -15,7 +15,7 @@ app.get('/:username', async (req, res) => {
 
   if (result) {
     const newFilmCoverURL = 'https://a.ltrbxd.com/resized/film-poster/8/7/9/3/2/0/879320-the-deep-dark-0-70-0-105-crop.jpg?v=d923579b15';
-    const updatedSvgContent = generateUpdatedSvg(result.title, result.filmYear, result.stars, newFilmCoverURL);
+    const updatedSvgContent = await generateUpdatedSvg(result.title, result.filmYear, result.stars, newFilmCoverURL);
 
     res.contentType('image/svg+xml');
     res.setHeader('Cache-Control', 's-max-age=10, stale-while-revalidate');
