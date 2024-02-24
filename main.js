@@ -1,6 +1,6 @@
 const express = require('express');
-const { generateUpdatedSvg } = require('./svgUtils');
-const { getLatestActivityDetails } = require('./dataFetcher');
+const { generateSvg } = require('./svgUtils');
+const { getLatestActivityDetails, getMovieCover } = require('./dataFetcher');
 
 const app = express();
 const port = 3000;
@@ -14,8 +14,14 @@ app.get('/:username', async (req, res) => {
   const result = await getLatestActivityDetails(username);
 
   if (result) {
-    const newFilmCoverURL = 'https://a.ltrbxd.com/resized/film-poster/8/7/9/3/2/0/879320-the-deep-dark-0-70-0-105-crop.jpg?v=d923579b15';
-    const updatedSvgContent = await generateUpdatedSvg(result.title, result.filmYear, result.stars, newFilmCoverURL);
+    let newFilmCoverURL = null
+    if (result.movieSlug != null) {
+      newFilmCoverURL = await getMovieCover(result.movieSlug); 
+    }else{
+      res.status(404).send('Failed to retrieve movie cover URL.');
+      return
+    }
+    const updatedSvgContent = await generateSvg(result.title, result.filmYear, result.stars, newFilmCoverURL, result.redirectUrl); 
 
     res.contentType('image/svg+xml');
     res.setHeader('Cache-Control', 's-max-age=10, stale-while-revalidate');
