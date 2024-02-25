@@ -9,17 +9,17 @@ const environment = process.env.NODE_ENV || 'development';
 
 const svgFilePath = './source.svg';
 
-async function generateSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl) {
+async function generateSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime) {
     let svgContent;
     if (newFilmCoverURL){
-        svgContent = await generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl);
+        svgContent = await generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl,datetime);
     }else{
-        svgContent = await generateUpdatedSvgNoCover(newTitle, newDate, newStars, newRedirectUrl);
+        svgContent = await generateUpdatedSvgNoCover(newTitle, newDate, newStars, newRedirectUrl, datetime);
     }
     return svgContent;
 }
 
-async function generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl) {
+async function generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime) {
     
     let $;
     if (environment === 'development') {
@@ -36,7 +36,8 @@ async function generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, 
 
     $('#title tspan').text(newTitle);
     $('#date tspan').text(newDate);
-    $('#starts tspan').text(newStars);
+    $('#stars tspan').text(newStars);
+    $('#ago tspan').text(timeSince(datetime));
     $('#redirect').attr('href', newRedirectUrl);
 
     try {
@@ -52,15 +53,50 @@ async function generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, 
     return $.xml();
 }
 
-async function generateUpdatedSvgNoCover(newTitle, newDate, newStars, newRedirectUrl) {
+async function generateUpdatedSvgNoCover(newTitle, newDate, newStars, newRedirectUrl, datetime) {
     const $ = cheerio.load(svgContentNoCover.initialSvgContent, { xmlMode: true });
 
     $('#title tspan').text(newTitle);
     $('#date tspan').text(newDate);
     $('#starts tspan').text(newStars);
+    $('#ago tspan').text(timeSince(datetime));
     $('#redirect').attr('href', newRedirectUrl);
 
     return $.xml();
 }
+
+
+function timeSince(date_string) {
+    var date = new Date(date_string);
+
+    var seconds = Math.floor((new Date() - date) / 1000);
+  
+    var interval = seconds / 31536000;
+    if (!date_string){
+        return "";
+    }
+  
+    if (interval > 1) {
+      return Math.floor(interval) + " y";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+      return Math.floor(interval) + " mo";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+      return Math.floor(interval) + "d";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+      return Math.floor(interval) + "h";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+      return Math.floor(interval) + "mi";
+    }
+    return Math.floor(seconds) + "s";
+  }
+
 
 module.exports = { generateSvg };

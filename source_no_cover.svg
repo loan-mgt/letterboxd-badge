@@ -4,13 +4,15 @@
         <g id="Frame 11">
             <rect width="399" height="138" rx="9" fill="url(#pattern0)" />
             <g  filter="url(#filter0_d_9_22)">
-                <text id="start" fill="white" xml:space="preserve" style="white-space: pre" font-family="Inter"
+                <text id="stars" fill="white" xml:space="preserve" style="white-space: pre" font-family="Inter"
                     font-size="32" letter-spacing="0em"><tspan x="11" y="121.636">&#x2605;&#x2605;&#x2605;&#x2605;</tspan></text>
             </g>
             <text id="title" fill="white" xml:space="preserve" style="white-space: pre"
                 font-family="Inter" font-size="27" letter-spacing="0em"><tspan x="11" y="46.3182">The Cloverfield Paradox</tspan></text>
             <text id="date" fill="white" fill-opacity="0.65" xml:space="preserve"
                 style="white-space: pre" font-family="Inter" font-size="16" letter-spacing="0em"><tspan x="11" y="68.3182">2024</tspan></text>
+            <text id="ago" fill="white" fill-opacity="0.65" xml:space="preserve"
+                style="white-space: pre" font-family="Inter" font-size="15" letter-spacing="0em"><tspan x="360.083" y="116.955">21h</tspan></text>
         </g>
         <defs>
             <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">

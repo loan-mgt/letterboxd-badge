@@ -16,12 +16,12 @@ app.get('/:username', async (req, res) => {
   if (result) {
     let newFilmCoverURL = null
     if (result.movieSlug != null) {
-      newFilmCoverURL = await getMovieCover(result.movieSlug); 
+      movieInfo = await getMovieCover(result.movieSlug); 
     }else{
       res.status(404).send('Failed to retrieve movie cover URL.');
       return
     }
-    const updatedSvgContent = await generateSvg(result.title, result.filmYear, result.stars, newFilmCoverURL, result.redirectUrl); 
+    const updatedSvgContent = await generateSvg(result.title, movieInfo.year, result.stars, movieInfo.movieCoverUrl, result.redirectUrl, result.ago); 
 
     res.contentType('image/svg+xml');
     res.setHeader('Cache-Control', 's-max-age=10, stale-while-revalidate');

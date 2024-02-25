@@ -11,18 +11,40 @@ async function getLatestActivityDetails(username) {
     const html = response.data;
     const $ = cheerio.load(html);
 
-    const latestActivitySection = $('.activity-row.-review').first();
-    const filmTitle = latestActivitySection.find('.headline-2 > a').text().trim();
-    const filmYear = latestActivitySection.find('.headline-2 > small > a').text().trim();
-    const stars = latestActivitySection.find('.film-detail-meta .rating').text().trim();
+    let latestActivitySection = null;
+    $('.activity-row').each((index, element) => {
+      const ratingText = $(element).find('.activity-summary > span.rating').text().trim();
+      if (ratingText) {
+        latestActivitySection = $(element);
+        return false; 
+      }
+    });
+
+    if (!latestActivitySection) {
+      return null;
+    }
+
+    let filmTitle = latestActivitySection.find('.headline-2 > a').text().trim();
+    let filmYear = latestActivitySection.find('.headline-2 > small > a').text().trim();
+    let stars = latestActivitySection.find('.film-detail-meta .rating').text().trim();
+    const ago = latestActivitySection.find('time').attr('datetime');
+
+    if (!filmTitle) {
+      filmTitle = latestActivitySection.find('.activity-summary > a.target').text().trim();
+      stars = latestActivitySection.find('.activity-summary > span.rating').text().trim();
+    }
+    
+
+
+    
+    
+    
     let movieSlug = null;
 
     latestActivitySection.find('a').each((index, element) => {
       const href = $(element).attr('href');
       
-      // Check if the href contains "film/content/"
       if (href && href.includes('film/')) {
-        // Extract the content between "film/content/" and "/"
         movieSlug = href.split('film/')[1].split('/')[0];
       }
     });
@@ -30,7 +52,7 @@ async function getLatestActivityDetails(username) {
 
 
 
-    return { title: filmTitle, filmYear, stars, movieSlug, redirectUrl: `${mainUrl}${username}/film/${movieSlug}` };
+    return { title: filmTitle, filmYear, stars, movieSlug, redirectUrl: `${mainUrl}${username}/film/${movieSlug}`, ago };
   } catch (error) {
     console.error('Error fetching data:', error.message);
     return null;
@@ -46,8 +68,9 @@ async function getMovieCover(movieSlug){
     const html = response.data;
     const $ = cheerio.load(html);
     const movieCoverUrl = $('img.image:not(hidden)').attr('src');
+    const year = $('div.film-poster').data('film-release-year');
 
-    return movieCoverUrl;
+    return {movieCoverUrl,year};
   } catch (error) {
     console.error('Error fetching movie cover:', error.message);
     return null;
