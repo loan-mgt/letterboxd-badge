@@ -23,7 +23,6 @@ async function generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, 
     
     let $;
     if (environment === 'development') {
-        console.log("Dev env");
         const svgFile = fs.readFileSync(svgFilePath, 'utf-8');
         $ = cheerio.load(svgFile, { xmlMode: true });
     } else {
