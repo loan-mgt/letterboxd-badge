@@ -29,16 +29,6 @@ async function getLatestActivityDetails(username) {
     let stars = latestActivitySection.find('.film-detail-meta .rating').text().trim();
     const ago = latestActivitySection.find('time').attr('datetime');
 
-    if (!filmTitle) {
-      filmTitle = latestActivitySection.find('.activity-summary > a.target').text().trim();
-      stars = latestActivitySection.find('.activity-summary > span.rating').text().trim();
-    }
-    
-
-
-    
-    
-    
     let movieSlug = null;
 
     latestActivitySection.find('a').each((index, element) => {
@@ -48,11 +38,25 @@ async function getLatestActivityDetails(username) {
         movieSlug = href.split('film/')[1].split('/')[0];
       }
     });
+    let redirectUrl = `${mainUrl}${username}/film/${movieSlug}`
+
+    if (!filmTitle) {
+      filmTitle = latestActivitySection.find('.activity-summary > a.target').text().trim();
+      stars = latestActivitySection.find('.activity-summary > span.rating').text().trim();
+      redirectUrl = `${mainUrl}${username}`
+    }
+    
+
+
+    
+    
+    
+    
 
 
 
 
-    return { title: filmTitle, filmYear, stars, movieSlug, redirectUrl: `${mainUrl}${username}/film/${movieSlug}`, ago };
+    return { title: filmTitle, filmYear, stars, movieSlug, redirectUrl, ago };
   } catch (error) {
     console.error('Error fetching data:', error.message);
     return null;
