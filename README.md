@@ -25,6 +25,5 @@ This is not an official Letterboxd service.
 - When clicked, the badge redirects to your Letterboxd activity.
 
 ## Future Features (To be added) 🚀
-- Support for Last Letterboxd Review Time (LLRT).
 - Customization options for the badge appearance.
 - Different types and sizes of badges for more flexibility.
