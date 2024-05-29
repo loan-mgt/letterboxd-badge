@@ -9,6 +9,10 @@ Generate a simple badge by adding the following markdown to your README:
 ```markdown
 ![my cinematic taste](https://letterboxd-badge.vercel.app/<letterboxd-user-name>)
 ```
+or
+```markdown
+[![my cinematic taste](https://letterboxd-badge.vercel.app/<letterboxd-user-name>)](<link-to-redirect-when-badge-clicked>)
+```
 Illustration of the letterboxd badge:
 
 ![my cinematic taste](https://letterboxd-badge.vercel.app/qypol)
