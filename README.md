@@ -17,8 +17,23 @@ Illustration of the letterboxd badge:
 
 ![my cinematic taste](https://letterboxd-badge.vercel.app/qypol)
 
+![my cinematic taste](https://letterboxd-badge.vercel.app/qypol?theme=colorMatch)
+
 ## Important Note ❗
 This is not an official Letterboxd service.
+
+## Options / Customization
+
+Here's a quick example of how to use options:
+
+```
+url?option1=valueofoption1&option2=valueofoption2
+```
+
+### Theme Options:
+- `classic`: Matches the Letterbox Dark theme.
+- `colorMatch`: Matches the theme to the film cover.
+
 
 ## Current Features ✨
 - Allows you to generate a badge on the fly, perfect for your GitHub profile.

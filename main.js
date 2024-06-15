@@ -17,6 +17,7 @@ app.get('/:username', async (req, res) => {
   try {
     const username = req.params.username;
     logger.info(`Received request for username: ${username}`);
+    const backgroundTheme = req.query.theme ?? "classic"
 
     const activityDetails = await fetchLatestActivityDetails(username);
 
@@ -36,13 +37,15 @@ app.get('/:username', async (req, res) => {
       }
     }
 
+
     const updatedSvgContent = await generateSvg(
-      activityDetails.title,
+      activityDetails.filmTitle,
       movieInfo?.year || activityDetails.filmYear,
       activityDetails.stars,
       movieInfo?.movieCoverUrl,
       activityDetails.redirectUrl,
-      activityDetails.ago
+      activityDetails.ago,
+      backgroundTheme
     );
 
     res.contentType('image/svg+xml');

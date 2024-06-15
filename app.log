@@ -1,0 +1,145 @@
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:23:33.529Z"}
+info: Received a request for the root path. Please use /:username. {"timestamp":"2024-06-15T14:23:39.745Z"}
+info: Received request for username: favicon.ico {"timestamp":"2024-06-15T14:23:40.055Z"}
+error: Error fetching data for username favicon.ico: Request failed with status code 404 {"timestamp":"2024-06-15T14:23:40.576Z"}
+warn: Failed to retrieve activity details for username: favicon.ico {"timestamp":"2024-06-15T14:23:40.576Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:23:44.186Z"}
+error: Error processing request for username qypol: Mustache is not defined {"timestamp":"2024-06-15T14:23:45.179Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:26:43.689Z"}
+error: Error processing request for username qypol: Mustache is not defined {"timestamp":"2024-06-15T14:26:44.658Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:29:09.537Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:29:15.845Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:29:17.527Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:31:26.237Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:31:31.029Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:31:32.473Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:31:41.982Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:31:44.194Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:31:45.023Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:32:37.486Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:32:39.805Z"}
+error: Error processing request for username qypol: svgContent is not defined {"timestamp":"2024-06-15T14:32:40.486Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:33:06.492Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:33:08.754Z"}
+error: Error processing request for username qypol: Invalid template! Template should be a "string" but "object" was given as the first argument for mustache#render(template, view, partials) {"timestamp":"2024-06-15T14:33:09.801Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:33:50.833Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:33:53.502Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:33:54.598Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:34:35.565Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:34:38.222Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:34:39.262Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:34:45.300Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:34:46.492Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:35:33.830Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:35:35.957Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:35:37.010Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:35:40.910Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:35:41.859Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:35:59.594Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:36:01.749Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:36:03.174Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:37:55.629Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:37:57.822Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:37:59.237Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:40:07.730Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:40:11.521Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:40:12.633Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:40:43.163Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:40:48.224Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:40:49.296Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:42:34.044Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:42:37.381Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:42:38.446Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:43:24.161Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:43:26.665Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:43:28.090Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:44:20.513Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:44:22.450Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:44:23.196Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T14:46:24.948Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T14:48:12.570Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T14:48:13.658Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:04:46.636Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:04:50.257Z"}
+error: Error processing request for username qypol: originalBackgroundSupport is not defined {"timestamp":"2024-06-15T15:04:51.343Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:05:15.765Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:05:18.591Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:05:19.623Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:05:43.316Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:05:46.214Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:05:46.911Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:06:56.696Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:06:59.362Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:07:00.489Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:07:27.821Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:07:31.176Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:07:32.249Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:09:15.958Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:09:18.872Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:09:19.927Z"}
+info: Received request for username: victorbonnefoy {"timestamp":"2024-06-15T15:09:43.639Z"}
+info: SVG sent successfully for username: victorbonnefoy {"timestamp":"2024-06-15T15:09:44.650Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:09:53.120Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:09:53.797Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:24:08.287Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:24:11.020Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:24:12.377Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:26:06.226Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:26:08.503Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:26:09.873Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:26:28.702Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:26:30.855Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:26:32.195Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:31:27.543Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:31:29.736Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:31:31.151Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:32:14.279Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:32:17.237Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:32:18.379Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:33:00.041Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:33:01.946Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:33:03.064Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:34:50.031Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:34:51.929Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:34:53.406Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:35:25.004Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:35:27.016Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:35:28.093Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:36:27.465Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:36:29.649Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:36:31.084Z"}
+info: Received request for username: victorbonnefoy {"timestamp":"2024-06-15T15:36:38.596Z"}
+info: SVG sent successfully for username: victorbonnefoy {"timestamp":"2024-06-15T15:36:39.769Z"}
+info: Received request for username: zoesmith {"timestamp":"2024-06-15T15:37:08.653Z"}
+warn: No latest activity section found for username: zoesmith {"timestamp":"2024-06-15T15:37:09.150Z"}
+warn: Failed to retrieve activity details for username: zoesmith {"timestamp":"2024-06-15T15:37:09.150Z"}
+info: Received request for username: sosolathug {"timestamp":"2024-06-15T15:37:19.863Z"}
+info: SVG sent successfully for username: sosolathug {"timestamp":"2024-06-15T15:37:20.955Z"}
+info: Received request for username: sosolathug {"timestamp":"2024-06-15T15:43:12.557Z"}
+info: SVG sent successfully for username: sosolathug {"timestamp":"2024-06-15T15:43:13.672Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:43:17.569Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:43:40.149Z"}
+info: Received request for username: sosolathug {"timestamp":"2024-06-15T15:43:42.014Z"}
+info: SVG sent successfully for username: sosolathug {"timestamp":"2024-06-15T15:43:42.691Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:44:08.403Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:44:09.453Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:44:39.286Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:45:03.381Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:45:04.696Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:45:30.639Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:45:34.376Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:45:35.415Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:46:00.279Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:46:02.349Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:46:03.082Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:46:35.513Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:46:37.499Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:46:38.245Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:47:35.935Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:47:37.745Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:47:38.532Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:47:43.211Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:47:43.907Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:48:13.424Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T15:48:15.391Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:48:16.472Z"}
