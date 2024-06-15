@@ -1,6 +1,5 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const { logger } = require('./logger');
 
 const LETTERBOXD_BASE_URL = "https://letterboxd.com";
 async function fetchLatestActivityDetails(username) {
