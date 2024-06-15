@@ -1,68 +1,89 @@
-const axios = require('axios'); // Import Axios module
-
-const fs = require('fs');
 const cheerio = require('cheerio');
-const svgContent = require('./build/source.js');
-const svgContentNoCover = require('./build/source_no_cover.js');
+const axios = require('axios');
+const Mustache = require('mustache');
+const { findColor } = require('./colorUtils')
 
-const environment = process.env.NODE_ENV || 'development';
+const {original, originalBackground, originalBackgroundSupport, colorBackgroundSupport} = require('./ressources/source.js');
+const {noCover} = require('./ressources/source_no_cover.js');
 
-const svgFilePath = './source.svg';
 
-async function generateSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime) {
+async function generateSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime, backgroundTheme) {
     let svgContent;
     if (newFilmCoverURL){
-        svgContent = await generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl,datetime);
+        svgContent = await generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime , backgroundTheme);
     }else{
         svgContent = await generateUpdatedSvgNoCover(newTitle, newDate, newStars, newRedirectUrl, datetime);
     }
     return svgContent;
 }
 
-async function generateUpdatedSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime) {
+async function generateUpdatedSvg(title, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime, backgroundTheme ) {
+  
+  const data = {
+      starsColor: 'white', 
+      titleColor: 'white', 
+      dateColor: 'white', 
+      agoColor: 'white', 
+      title,
+      date: newDate,
+      stars: newStars,
+      ago: timeSince(datetime), 
+      filmCover: null ,
+      newRedirectUrl: newRedirectUrl,
+      background: originalBackground,
+      backgroundSupport: originalBackgroundSupport,
+  };
+
+  
+
+  try {
+      const response = await axios.get(newFilmCoverURL, { responseType: 'arraybuffer' });
+      const imageData = Buffer.from(response.data, 'binary');
+      const base64Image = imageData.toString('base64');
+      data.filmCover = `data:image/jpeg;base64,${base64Image}`;
+
+      if (backgroundTheme == "colorMatch") {
+        const {background, accent} = await findColor(base64Image);
     
-    let $;
-    if (environment === 'development') {
-        console.log("Dev env");
-        const svgFile = fs.readFileSync(svgFilePath, 'utf-8');
-        $ = cheerio.load(svgFile, { xmlMode: true });
-    } else {
-        $ = cheerio.load(svgContent.initialSvgContent, { xmlMode: true });
-    }
+        data.starsColor = accent;
+        data.titleColor = accent;
+        data.dateColor = accent;
+        data.agoColor = accent;
+    
+        data.backgroundHex = background
 
-    if (!$) {
-        return "Sorry, an error occurred";
-    }
+        data.backgroundSupport = Mustache.render(colorBackgroundSupport, data);
+    
+      }
 
-    $('#title tspan').text(newTitle);
-    $('#date tspan').text(newDate);
-    $('#stars tspan').text(newStars);
-    $('#ago tspan').text(timeSince(datetime));
-    $('#redirect').attr('href', newRedirectUrl);
 
-    try {
-        const response = await axios.get(newFilmCoverURL, { responseType: 'arraybuffer' });
-        const imageData = Buffer.from(response.data, 'binary');
-        const base64Image = imageData.toString('base64');
-        $('#film_cover_small').attr('xlink:href', `data:image/jpeg;base64,${base64Image}`);
-    } catch (error) {
-        console.error('Error fetching movie cover:', error);
-        return generateUpdatedSvgNoCover(newTitle, newDate, newStars, newRedirectUrl);
-    }
+  } catch (error) {
+      console.error('Error fetching movie cover:', error);
+      return generateUpdatedSvgNoCover(title, newDate, newStars, newRedirectUrl, environment);
+  }
 
-    return $.xml();
+
+  return Mustache.render(original, data);
 }
 
 async function generateUpdatedSvgNoCover(newTitle, newDate, newStars, newRedirectUrl, datetime) {
-    const $ = cheerio.load(svgContentNoCover.initialSvgContent, { xmlMode: true });
+    const svgContent = cheerio.load(noCover, { xmlMode: true });
 
-    $('#title tspan').text(newTitle);
-    $('#date tspan').text(newDate);
-    $('#starts tspan').text(newStars);
-    $('#ago tspan').text(timeSince(datetime));
-    $('#redirect').attr('href', newRedirectUrl);
+    const data = {
+      starsColor: 'white', 
+      titleColor: 'white', 
+      dateColor: 'white', 
+      agoColor: 'white', 
+      title: newTitle,
+      date: newDate,
+      stars: newStars,
+      ago: timeSince(datetime),
+      newRedirectUrl: newRedirectUrl,
+      background: originalBackground,
+      backgroundSupport: originalBackgroundSupport
+  };
 
-    return $.xml();
+    return Mustache.render(svgContent.xml(), data);
 }
 
 
