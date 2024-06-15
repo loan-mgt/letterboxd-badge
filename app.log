@@ -143,3 +143,19 @@ info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:47:4
 info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T15:48:13.424Z"}
 info: Received request for username: qypol {"timestamp":"2024-06-15T15:48:15.391Z"}
 info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T15:48:16.472Z"}
+info: Server is running at http://localhost:3000 environment: undefined {"timestamp":"2024-06-15T16:05:04.173Z"}
+info: Received a request for the root path. Please use /:username. {"timestamp":"2024-06-15T16:05:08.683Z"}
+info: Received request for username: favicon.ico {"timestamp":"2024-06-15T16:05:08.886Z"}
+error: Error fetching data for username favicon.ico: Request failed with status code 404 {"timestamp":"2024-06-15T16:05:09.546Z"}
+warn: Failed to retrieve activity details for username: favicon.ico {"timestamp":"2024-06-15T16:05:09.546Z"}
+info: Received request for username: service-worker.js {"timestamp":"2024-06-15T16:05:09.706Z"}
+error: Error fetching data for username service-worker.js: Request failed with status code 404 {"timestamp":"2024-06-15T16:05:10.257Z"}
+warn: Failed to retrieve activity details for username: service-worker.js {"timestamp":"2024-06-15T16:05:10.257Z"}
+info: Received request for username: qypol {"timestamp":"2024-06-15T16:05:14.668Z"}
+info: Received request for username: service-worker.js {"timestamp":"2024-06-15T16:05:15.693Z"}
+info: SVG sent successfully for username: qypol {"timestamp":"2024-06-15T16:05:16.168Z"}
+error: Error fetching data for username service-worker.js: Request failed with status code 404 {"timestamp":"2024-06-15T16:05:16.298Z"}
+warn: Failed to retrieve activity details for username: service-worker.js {"timestamp":"2024-06-15T16:05:16.298Z"}
+info: Received request for username: service-worker.js {"timestamp":"2024-06-15T16:05:17.222Z"}
+error: Error fetching data for username service-worker.js: Request failed with status code 404 {"timestamp":"2024-06-15T16:05:17.833Z"}
+warn: Failed to retrieve activity details for username: service-worker.js {"timestamp":"2024-06-15T16:05:17.834Z"}

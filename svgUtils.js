@@ -3,8 +3,8 @@ const axios = require('axios');
 const Mustache = require('mustache');
 const { findColor } = require('./colorUtils')
 
-const {original, originalBackground, originalBackgroundSupport, colorBackgroundSupport} = require('./build/source.js');
-const {noCover} = require('./build/source_no_cover.js');
+const {original, originalBackground, originalBackgroundSupport, colorBackgroundSupport} = require('./ressources/source.js');
+const {noCover} = require('./ressources/source_no_cover.js');
 
 
 async function generateSvg(newTitle, newDate, newStars, newFilmCoverURL, newRedirectUrl, datetime, backgroundTheme) {
