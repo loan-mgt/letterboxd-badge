@@ -1,4 +1,5 @@
-const sharp = require('sharp'); // For image processing
+const Jimp = require('jimp'); // For image processing
+
 
 function componentToHex(c) {
     const hex = c.toString(16);
@@ -27,36 +28,40 @@ async function processBase64Image(base64Image) {
         // Convert base64 to buffer
         const buffer = Buffer.from(base64Image, 'base64');
 
-        // Process image with sharp
-        const { data, info } = await sharp(buffer)
-            .resize(300) // Resize image to reduce processing time
-            .raw()
-            .toBuffer({ resolveWithObject: true });
+        // Load the image with Jimp
+        const image = await Jimp.read(buffer);
 
-        const { width, height, channels } = info;
+        // Resize the image to reduce processing time
+        image.resize(300, Jimp.AUTO);
+
+        const width = image.bitmap.width;
+        const height = image.bitmap.height;
+
         const pixels = width * height;
 
         let background = [255, 255, 255]; // Default to white
         let accent = [0, 0, 0]; // Default to black
 
         // Find suitable colors with sufficient contrast
-        for (let i = 0; i < pixels * channels; i += channels) {
-            const r = data[i];
-            const g = data[i + 1];
-            const b = data[i + 2];
-            const currentColor = [r, g, b];
 
-            // Example: Check if the color is dark enough for background
-            if (getRelativeLuminance(currentColor) < 0.5) {
-                background = currentColor;
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const { r, g, b } = Jimp.intToRGBA(image.getPixelColor(x, y));
+                const currentColor = [r, g, b];
+
+                // Example: Check if the color is dark enough for background
+                if (getRelativeLuminance(currentColor) < 0.5) {
+                    background = currentColor;
+                }
+
+                // Example: Check if the color is light enough for accent
+                if (getRelativeLuminance(currentColor) > 0.5) {
+                    accent = currentColor;
+                }
+
+                // Additional checks and conditions can be added based on your specific requirements
             }
 
-            // Example: Check if the color is light enough for accent
-            if (getRelativeLuminance(currentColor) > 0.5) {
-                accent = currentColor;
-            }
-
-            // Additional checks and conditions can be added based on your specific requirements
         }
 
         return {

@@ -14,39 +14,21 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/:username', async (req, res) => {
-  try {
-    const username = req.params.username;
-    logger.info(`Received request for username: ${username}`);
-    const backgroundTheme = req.query.theme ?? "classic"
 
-    const activityDetails = await fetchLatestActivityDetails(username);
+  const username = req.params.username;
+  const result = await fetchLatestActivityDetails(username);
+  const backgroundTheme = req.query.theme ?? "classic"
 
-    if (!activityDetails) {
-      logger.warn(`Failed to retrieve activity details for username: ${username}`);
-      res.status(404).send('Failed to retrieve activity details.');
-      return;
+  if (result) {
+    let newFilmCoverURL = null
+    if (result.movieSlug != null) {
+      movieInfo = await fetchMovieCover(result.movieSlug); 
+    }else{
+      res.status(404).send('Failed to retrieve movie cover URL.');
+      return
     }
+    const updatedSvgContent = await generateSvg(result.filmTitle, movieInfo.year, result.stars, movieInfo.movieCoverUrl, result.redirectUrl, result.ago, backgroundTheme); 
 
-    let movieInfo = null;
-    if (activityDetails.movieSlug) {
-      movieInfo = await fetchMovieCover(activityDetails.movieSlug);
-      if (!movieInfo) {
-        logger.warn(`Failed to retrieve movie cover URL for username: ${username}`);
-        res.status(404).send('Failed to retrieve movie cover URL.');
-        return;
-      }
-    }
-
-
-    const updatedSvgContent = await generateSvg(
-      activityDetails.filmTitle,
-      movieInfo?.year || activityDetails.filmYear,
-      activityDetails.stars,
-      movieInfo?.movieCoverUrl,
-      activityDetails.redirectUrl,
-      activityDetails.ago,
-      backgroundTheme
-    );
 
     res.contentType('image/svg+xml');
     res.setHeader('Cache-Control', 's-max-age=10, stale-while-revalidate');
