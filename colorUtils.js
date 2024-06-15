@@ -1,5 +1,6 @@
 const Jimp = require('jimp'); // For image processing
 
+
 function componentToHex(c) {
     const hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
@@ -35,12 +36,14 @@ async function processBase64Image(base64Image) {
 
         const width = image.bitmap.width;
         const height = image.bitmap.height;
+
         const pixels = width * height;
 
         let background = [255, 255, 255]; // Default to white
         let accent = [0, 0, 0]; // Default to black
 
         // Find suitable colors with sufficient contrast
+
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
                 const { r, g, b } = Jimp.intToRGBA(image.getPixelColor(x, y));
@@ -58,6 +61,7 @@ async function processBase64Image(base64Image) {
 
                 // Additional checks and conditions can be added based on your specific requirements
             }
+
         }
 
         return {
@@ -72,7 +76,9 @@ async function processBase64Image(base64Image) {
 
 // Exported main function
 async function findColor(base64Image) {
+
     return await processBase64Image(base64Image);
+
 }
 
 module.exports = { findColor };

@@ -1,5 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const { logger } = require('./logger');
 
 const LETTERBOXD_BASE_URL = "https://letterboxd.com";
 async function fetchLatestActivityDetails(username) {
@@ -13,7 +14,9 @@ async function fetchLatestActivityDetails(username) {
     const latestActivitySection = findLatestActivitySection($);
 
     if (!latestActivitySection) {
+
       console.warn(`No latest activity section found for username: ${username}`);
+
       return null;
     }
 
@@ -21,7 +24,9 @@ async function fetchLatestActivityDetails(username) {
 
     return activityDetails;
   } catch (error) {
+
     console.error(`Error fetching data for username ${username}: ${error.message}`);
+
     return null;
   }
 }
@@ -39,7 +44,9 @@ async function fetchMovieCover(movieSlug) {
     
     return { movieCoverUrl, year };
   } catch (error) {
+
     console.error(`Error fetching movie cover for movieSlug ${movieSlug}: ${error.message}`);
+
     return null;
   }
 }
@@ -81,6 +88,7 @@ function parseActivitySection($, latestActivitySection, username) {
   console.debug(`Movie slug for username ${username}: ${movieSlug}`);
   console.debug(`Redirect URL for username ${username}: ${redirectUrl}`);
   console.debug(`Ago for username ${username}: ${ago}`);
+
 
   return { filmTitle, filmYear, stars, movieSlug, redirectUrl, ago };
 }
