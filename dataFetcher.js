@@ -13,9 +13,7 @@ async function fetchLatestActivityDetails(username) {
     const latestActivitySection = findLatestActivitySection($);
 
     if (!latestActivitySection) {
-
       console.warn(`No latest activity section found for username: ${username}`);
-
       return null;
     }
 
@@ -23,9 +21,7 @@ async function fetchLatestActivityDetails(username) {
 
     return activityDetails;
   } catch (error) {
-
     console.error(`Error fetching data for username ${username}: ${error.message}`);
-
     return null;
   }
 }
@@ -43,9 +39,7 @@ async function fetchMovieCover(movieSlug) {
     
     return { movieCoverUrl, year };
   } catch (error) {
-
     console.error(`Error fetching movie cover for movieSlug ${movieSlug}: ${error.message}`);
-
     return null;
   }
 }
@@ -55,7 +49,6 @@ function findLatestActivitySection($) {
 
   $('.activity-row').each((index, element) => {
     const ratingText = $(element).find('.activity-summary > span.rating').text().trim();
-
     if (ratingText) {
       latestActivitySection = $(element);
       return false;
@@ -66,30 +59,35 @@ function findLatestActivitySection($) {
 }
 
 function parseActivitySection($, latestActivitySection, username) {
-  let filmTitle = latestActivitySection.find('.headline-2 > a').text().trim();
-  let filmYear = latestActivitySection.find('.headline-2 > small > a').text().trim();
-  let stars = latestActivitySection.find('.film-detail-meta .rating').text().trim();
-  const ago = latestActivitySection.find('time').attr('datetime');
+  let filmTitle, filmYear, stars, redirectUrl, ago;
 
-  const movieSlug = findMovieSlug($, latestActivitySection);
+  const summary = latestActivitySection.find('.activity-summary');
+  const nameLink = summary.find('a.name').attr('href');
+  const targetLink = summary.find('a.target').attr('href');
+  const contextSpan = summary.find('span.context');
+  const time = latestActivitySection.find('time').attr('datetime');
 
-  let redirectUrl = `${LETTERBOXD_BASE_URL}${username}/film/${movieSlug}`;
-
-  if (!filmTitle) {
-    filmTitle = latestActivitySection.find('.activity-summary > a.target').text().trim();
-    stars = latestActivitySection.find('.activity-summary > span.rating').text().trim();
-    redirectUrl = `${LETTERBOXD_BASE_URL}${username}`;
+  if (contextSpan.length > 0) {
+    filmTitle = contextSpan.next().text().trim();
+    stars = contextSpan.parent().find('span.rating').text().trim();
+    redirectUrl = `${LETTERBOXD_BASE_URL}${nameLink}`;
+  } else {
+    filmTitle = summary.find('a.target').text().trim();
+    stars = summary.find('span.rating').text().trim();
+    redirectUrl = `${LETTERBOXD_BASE_URL}${targetLink}`;
   }
 
+  ago = time || summary.find('span.nobr').text().trim();
+  
+  const movieSlug = findMovieSlug($, latestActivitySection);
+
   console.debug(`Film title for username ${username}: ${filmTitle}`);
-  console.debug(`Film year for username ${username}: ${filmYear}`);
   console.debug(`Stars for username ${username}: ${stars}`);
   console.debug(`Movie slug for username ${username}: ${movieSlug}`);
   console.debug(`Redirect URL for username ${username}: ${redirectUrl}`);
   console.debug(`Ago for username ${username}: ${ago}`);
 
-
-  return { filmTitle, filmYear, stars, movieSlug, redirectUrl, ago };
+  return { filmTitle, stars, movieSlug, redirectUrl, ago };
 }
 
 function findMovieSlug($, latestActivitySection) {
