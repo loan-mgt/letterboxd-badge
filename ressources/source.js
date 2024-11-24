@@ -54,4 +54,4 @@ const source = `
     </a>
 </svg>
 `;
-module.exports = { source };
+export { source };

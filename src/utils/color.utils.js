@@ -1,4 +1,4 @@
-const Jimp = require('jimp'); // For image processing
+import Jimp from 'jimp'; // For image processing
 
 
 function componentToHex(c) {
@@ -79,4 +79,4 @@ async function findColor(base64Image) {
 
 }
 
-module.exports = { findColor };
+export { findColor };

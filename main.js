@@ -1,36 +1,17 @@
-const express = require('express');
-const { generateSvg } = require('./src/svg-utils');
-const { fetchLetterboxdRSS, fetchMovieCover } = require('./src/data-fetcher');
-const { source } = require('./ressources/source');
+import express from 'express';
+import { setupRoutes } from './src/routes/index.js';
+import { setupMiddleware } from './src/middleware.js';
+import config from './src/config.js';
 
 const app = express();
-const port = 3000;
 
-app.get('/', async (req, res) => {
-  res.send('Hello! please use /:username ');
-});
+// Setup middleware
+setupMiddleware(app);
 
-app.get('/:username', async (req, res) => {
-  const username = req.params.username;
-  const result = await fetchLetterboxdRSS(username);
-  const backgroundTheme = req.query.theme ?? "classic"
+// Setup routes
+setupRoutes(app);
 
-  if (result && result.length > 0) {
-    const selectedReview = result[0]; // Get the first review from the array
-    console.log('Received request for username: ' + username + ' ' + JSON.stringify(selectedReview));
-    const updatedSvgContent = await generateSvg(selectedReview, backgroundTheme, source); 
-
-    res.contentType('image/svg+xml');
-    res.setHeader('Cache-Control', 's-max-age=10, stale-while-revalidate');
-    res.send(updatedSvgContent);
-
-    console.log('SVG sent successfully.');
-
-  } else {
-    res.status(404).send('Failed to retrieve activity details.');
-  }
-});
-
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+// Start server
+app.listen(config.port, () => {
+  console.log(`Server running at http://localhost:${config.port}`);
 });

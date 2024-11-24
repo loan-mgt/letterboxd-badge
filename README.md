@@ -1,6 +1,6 @@
 <div align="center">
   <img width=200 alt="logo letterboxd badge" src="assets/logo.svg"/>
-  <h1>letterbox-badge 🎬</h1>
+  <h1>letterboxd-badge 🎬</h1>
   <p>Showcase your cinematic tastes in your README with a personalized Letterboxd badge!</p>
 </div>
 
@@ -19,26 +19,33 @@ Illustration of the letterboxd badge:
 
 ![my cinematic taste](https://letterboxd-badge.vercel.app/qypol?theme=colorMatch)
 
-## Important Note ❗
-This is not an official Letterboxd service.
+
+
 
 ## Options / Customization
 
-Here's a quick example of how to use options:
+You can customize your URL by passing various options. Here’s an example of how to use them:
 
 ```
 url?option1=valueofoption1&option2=valueofoption2
 ```
 
-### Theme Options:
-- `classic`: Matches the Letterbox Dark theme.
-- `colorMatch`: Matches the theme to the film cover.
+### Available Options:
 
+| **Option**      | **Description**                                                              | **Values**                                                                 |
+|-----------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| `theme`         | Choose the appearance theme for the display.                                  | `classic`: Matches the Letterbox Dark theme.<br>`colorMatch`: Matches the theme to the film cover. |
+| `index`   | Specifies which review to display based on its index.                        | `number`: 0 for the most recent review, 1 for the one before that, etc.   |
 
-## Current Features ✨
-- Allows you to generate a badge on the fly, perfect for your GitHub profile.
-- When clicked, the badge redirects to your Letterboxd activity.
+### Example:
 
-## Future Features (To be added) 🚀
-- Customization options for the badge appearance.
-- Different types and sizes of badges for more flexibility.
+To use the `classic` theme and show the second most recent review, your URL would look like this:
+
+```
+url?theme=classic&reviewIndex=1
+```
+
+## Important Note ❗
+This is not an official Letterboxd service.
+
+Here’s an improved version of your README with a better-structured table for clarity and easier reference:

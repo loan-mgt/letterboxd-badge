@@ -1,7 +1,7 @@
-const axios = require('axios');
-const sharp = require('sharp');
-const { DOMParser, XMLSerializer } = require('@xmldom/xmldom');
-const { findColor } = require('./color-utils');
+import axios from 'axios';
+import sharp from 'sharp';
+import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
+import { findColor } from '../utils/color.utils.js';
 
 /**
  * Generate an SVG representation of the film data.
@@ -111,4 +111,4 @@ function getTimeDiff(datetime) {
 
   return 'now';
 }
-module.exports = { generateSvg };
+export { generateSvg };
