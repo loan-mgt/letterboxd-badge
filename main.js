@@ -1,6 +1,7 @@
 const express = require('express');
-const { generateSvg } = require('./svgUtils');
-const { fetchLatestActivityDetails, fetchMovieCover } = require('./dataFetcher');
+const { generateSvg } = require('./src/svg-utils');
+const { fetchLetterboxdRSS, fetchMovieCover } = require('./src/data-fetcher');
+const { source } = require('./ressources/source');
 
 const app = express();
 const port = 3000;
@@ -11,24 +12,20 @@ app.get('/', async (req, res) => {
 
 app.get('/:username', async (req, res) => {
   const username = req.params.username;
-  const result = await fetchLatestActivityDetails(username);
+  const result = await fetchLetterboxdRSS(username);
   const backgroundTheme = req.query.theme ?? "classic"
 
-  if (result) {
-    let newFilmCoverURL = null
-    if (result.movieSlug != null) {
-      movieInfo = await fetchMovieCover(result.movieSlug); 
-    }else{
-      res.status(404).send('Failed to retrieve movie cover URL.');
-      return
-    }
-    const updatedSvgContent = await generateSvg(result.filmTitle, movieInfo.year, result.stars, movieInfo.movieCoverUrl, result.redirectUrl, result.ago, backgroundTheme); 
+  if (result && result.length > 0) {
+    const selectedReview = result[0]; // Get the first review from the array
+    console.log('Received request for username: ' + username + ' ' + JSON.stringify(selectedReview));
+    const updatedSvgContent = await generateSvg(selectedReview, backgroundTheme, source); 
 
     res.contentType('image/svg+xml');
     res.setHeader('Cache-Control', 's-max-age=10, stale-while-revalidate');
     res.send(updatedSvgContent);
 
     console.log('SVG sent successfully.');
+
   } else {
     res.status(404).send('Failed to retrieve activity details.');
   }
