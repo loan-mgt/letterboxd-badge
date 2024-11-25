@@ -11,8 +11,5 @@
     "sharp": "^0.33.5",
     "xml2js": "^0.6.2"
   },
-  "scripts": {
-    "start": "node main.js"
-  },
   "type": "module"
 }
