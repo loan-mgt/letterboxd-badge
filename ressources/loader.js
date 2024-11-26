@@ -12,7 +12,7 @@ const __dirname = dirname(__filename);
  */
 async function loadSource() {
     // if dev load svg dynamically
-    if (process.env.NODE_ENV.trim() === 'production') {
+    if (process.env.NODE_ENV === 'production') {
         console.log('prod mode');
         const { source } = await import('./source.js');
         return source;
