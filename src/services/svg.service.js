@@ -2,6 +2,7 @@ import axios from 'axios';
 import sharp from 'sharp';
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
 import { findColor } from '../utils/color.utils.js';
+import config from '../config.js';
 
 /**
  * Generate an SVG representation of the film data.
@@ -36,17 +37,24 @@ async function generateSvg(data, backgroundTheme, sourceSvg) {
   try {
     // Get and process image
     const imageResponse = await axios.get(data.filmCover, { responseType: 'arraybuffer' });
-    const image = await sharp(imageResponse.data)
-      .resize(70, 105)
-      .jpeg({ quality: 80 })
-      .toBuffer();
-      const base64Image = `data:image/jpeg;base64,${image.toString('base64')}`;
+    const resizedImage = sharp(imageResponse.data).resize(70, 105);
 
-      if (backgroundTheme == "colorMatch") {
-        const {background, accent} = await findColor(base64Image);
-        updateElement(svg, 'background', background, 'fill');
-        updateElement(svg, 'stars', accent, 'fill');
-      }
+    const [jpegImage, rawImage] = await Promise.all([
+      resizedImage.clone().jpeg({ quality: 80 }).toBuffer(),
+      resizedImage.clone().ensureAlpha().raw().toBuffer({ resolveWithObject: true })
+    ]);
+    const base64Image = `data:image/jpeg;base64,${jpegImage.toString('base64')}`;
+
+    if (backgroundTheme === 'colorMatch') {
+      const { background, accent } = await findColor({
+        width: rawImage.info.width,
+        height: rawImage.info.height,
+        rgba: rawImage.data,
+        minContrast: config.color.minContrast
+      });
+      updateElement(svg, 'background', background, 'fill');
+      updateElement(svg, 'stars', accent, 'fill');
+    }
     // set cover info
     updateElement(svg, 'film_cover_small', base64Image, 'xlink:href');
     updateElement(svg, 'redirect', data.link, 'href');

@@ -1,0 +1,16 @@
+{
+  "name": "okmain_wasm",
+  "type": "module",
+  "version": "0.1.0",
+  "license": "MIT OR Apache-2.0",
+  "files": [
+    "okmain_wasm_bg.wasm",
+    "okmain_wasm.js",
+    "okmain_wasm.d.ts"
+  ],
+  "main": "okmain_wasm.js",
+  "types": "okmain_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
