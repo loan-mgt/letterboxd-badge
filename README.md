@@ -15,9 +15,9 @@ or with a custom redirect link
 ```
 Illustration of the letterboxd badge:
 
-![my cinematic taste](https://letterboxd-badge.vercel.app/qypol/svg)
+![my cinematic taste](https://letterboxd-badge.vercel.app/qypol)
 
-![my cinematic taste](https://letterboxd-badge.vercel.app/qypol/svg?theme=colorMatch)
+![my cinematic taste](https://letterboxd-badge.vercel.app/qypol?theme=colorMatch)
 
 
 
